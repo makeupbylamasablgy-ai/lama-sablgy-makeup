@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lama Sablgy — Makeup Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;1,9..144,450&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221d1a;
+    --ink-soft:#3a322c;
+    --paper:#f7f0e8;
+    --paper-dim:#e9ddce;
+    --blush:#e3bfab;
+    --clay:#b96f4e;
+    --gold:#c8a06a;
+    --line: rgba(247,240,232,0.16);
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    margin:0;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px;
+    background:rgba(34,29,26,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .nav.scrolled{
+    border-bottom:1px solid var(--line);
+  }
+  .nav .mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.25rem;
+    letter-spacing:.01em;
+  }
+  .nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+    margin:0;
+    padding:0;
+  }
+  .nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color:var(--paper-dim);
+    transition:color .2s ease;
+  }
+  .nav a:hover{color:var(--blush);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 78% 8%, rgba(185,111,78,0.25), transparent 55%),
+      linear-gradient(180deg, #241f1c 0%, #1c1815 100%);
+  }
+  .hero-photo{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:flex-end;
+  }
+  .hero-photo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(90deg, var(--ink) 0%, rgba(28,24,21,0.55) 26%, rgba(28,24,21,0.12) 46%, transparent 62%);
+  }
+  .hero-photo img{
+    height:100%;
+    width:58%;
+    object-fit:cover;
+    object-position: 50% 20%;
+    opacity:0.9;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    padding:0 32px 88px;
+    max-width:var(--maxw);
+    width:100%;
+    margin:0 auto;
+    opacity:0;
+    transform:translateY(14px);
+    animation: rise .9s cubic-bezier(.2,.7,.2,1) .15s forwards;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0);} }
+
+  .hero-kicker{
+    font-size:.95rem;
+    color:var(--blush);
+    font-style:italic;
+    font-family:'Fraunces', serif;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(3.2rem, 9vw, 6.4rem);
+    line-height:.98;
+    letter-spacing:-0.01em;
+    max-width:11ch;
+  }
+  .hero-sub{
+    margin-top:26px;
+    max-width:38ch;
+    font-size:1.08rem;
+    line-height:1.6;
+    color:var(--paper-dim);
+    font-weight:300;
+  }
+  .hero-meta{
+    margin-top:38px;
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .hero-meta div{
+    font-size:.85rem;
+    color:var(--paper-dim);
+    border-top:1px solid var(--line);
+    padding-top:10px;
+    min-width:150px;
+  }
+  .hero-meta strong{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    font-size:1rem;
+    color:var(--paper);
+    margin-bottom:4px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  .service{
+    padding:130px 0;
+    border-top:1px solid var(--line);
+  }
+  .service .wrap{
+    display:grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap:64px;
+    align-items:center;
+  }
+  .service.reverse .wrap{
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+  .service.reverse .service-text{order:2;}
+  .service.reverse .service-gallery{order:1;}
+
+  .service-text .index{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--clay);
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+  .service-text h2{
+    font-size:clamp(2.2rem, 4vw, 3.1rem);
+    line-height:1.04;
+    margin-bottom:22px;
+  }
+  .service-text p{
+    font-size:1.02rem;
+    line-height:1.75;
+    color:var(--paper-dim);
+    font-weight:300;
+    max-width:42ch;
+    margin-bottom:34px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--paper);
+    padding:14px 26px;
+    border-radius:2px;
+    font-size:.92rem;
+    letter-spacing:.02em;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .btn:hover{
+    background:var(--blush);
+    transform:translateY(-1px);
+  }
+  .btn svg{width:15px;height:15px;flex:none;}
+
+  .service-gallery{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+  }
+  .service-gallery .ph{
+    overflow:hidden;
+    background:var(--ink-soft);
+  }
+  .service-gallery .ph img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .service-gallery .ph:hover img{transform:scale(1.045);}
+
+  .service-gallery .ph.tall{
+    aspect-ratio: 3/4;
+    align-self:start;
+    border-radius: 2px 60px 2px 2px;
+  }
+  .service-gallery .ph.short{
+    aspect-ratio: 3/4;
+    align-self:end;
+    margin-top:56px;
+    border-radius: 2px 2px 2px 60px;
+  }
+  .service.reverse .service-gallery .ph.tall{ border-radius: 60px 2px 2px 2px; }
+  .service.reverse .service-gallery .ph.short{ border-radius: 2px 2px 60px 2px; }
+  .service-gallery .ph.wide{
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+    align-self:auto;
+    margin-top:18px;
+    border-radius: 2px 2px 60px 2px;
+  }
+
+  /* ---------- WHY LAMA ---------- */
+  .why{
+    padding:120px 0;
+    border-top:1px solid var(--line);
+    background:linear-gradient(180deg, transparent, rgba(185,111,78,0.05));
+  }
+  .why .wrap{
+    display:grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap:56px;
+    align-items:start;
+  }
+  .why-head .index{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--clay);
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+  .why-head h2{
+    font-size:clamp(2.1rem, 4vw, 2.9rem);
+    line-height:1.05;
+    max-width:9ch;
+  }
+  .why-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0;
+  }
+  .why-list li{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:22px 20px 22px 0;
+    border-top:1px solid var(--line);
+    font-size:.98rem;
+    line-height:1.55;
+    color:var(--paper-dim);
+    font-weight:300;
+  }
+  .why-list li:nth-last-child(-n+1),
+  .why-list li:nth-last-child(-n+2){
+    border-bottom:1px solid var(--line);
+  }
+  .why-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--clay);
+    font-size:1.15rem;
+    flex:none;
+    line-height:1.4;
+  }
+
+  /* ---------- STACKED CTA BUTTON ---------- */
+  .btn-stacked{
+    flex-direction:row;
+    padding:16px 28px;
+  }
+  .btn-stacked span{
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    gap:2px;
+  }
+  .btn-stacked strong{
+    font-family:'Work Sans', sans-serif;
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+  }
+  .btn-stacked em{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:.85rem;
+    opacity:.75;
+  }
+
+  /* ---------- FOOTER / CTA ---------- */
+  .cta{
+    border-top:1px solid var(--line);
+    padding:120px 0 90px;
+    text-align:center;
+  }
+  .cta .serif{
+    font-size:clamp(2rem,5vw,3.4rem);
+    font-style:italic;
+    max-width:16ch;
+    margin:0 auto 30px;
+    line-height:1.15;
+  }
+  .cta .btn{margin-top:6px;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:.82rem;
+    color:var(--paper-dim);
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  footer a{text-decoration:none;color:var(--paper-dim);}
+  footer a:hover{color:var(--blush);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .nav ul{
+      position:fixed;
+      inset:64px 0 0 0;
+      background:var(--ink);
+      flex-direction:column;
+      padding:30px 32px;
+      gap:22px;
+      transform:translateY(-110%);
+      transition:transform .35s ease;
+      border-bottom:1px solid var(--line);
+    }
+    .nav ul.open{transform:translateY(0);}
+    .nav-toggle{
+      display:block;
+      background:none;
+      border:none;
+      color:var(--paper);
+      font-size:1.4rem;
+      cursor:pointer;
+      line-height:1;
+    }
+    .hero{align-items:flex-end;}
+    .hero-photo::before{
+      background:linear-gradient(0deg, var(--ink) 0%, rgba(28,24,21,0.7) 40%, rgba(28,24,21,0.25) 75%, rgba(28,24,21,0.1) 100%);
+    }
+    .hero-photo img{width:100%; opacity:0.55;}
+    .hero-content{padding-bottom:56px;}
+    .service{padding:80px 0;}
+    .service .wrap, .service.reverse .wrap{
+      grid-template-columns:1fr;
+      gap:36px;
+    }
+    .service.reverse .service-text{order:1;}
+    .service.reverse .service-gallery{order:2;}
+    .service-gallery .ph.short{margin-top:36px;}
+    .why{padding:80px 0;}
+    .why .wrap{grid-template-columns:1fr; gap:32px;}
+    .why-head h2{max-width:none;}
+    .why-list{grid-template-columns:1fr;}
+    .why-list li:nth-last-child(-n+2){border-bottom:none;}
+    .why-list li:last-child{border-bottom:1px solid var(--line);}
+    .btn-stacked{padding:14px 22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .hero-content{animation:none; opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="mark">Lama Sablgy</div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+  <ul id="navList">
+    <li><a href="#bridal">Bridal</a></li>
+    <li><a href="#engagement">Engagement</a></li>
+    <li><a href="#soiree">Soir&eacute;e</a></li>
+    <li><a href="#high-soiree">High Soir&eacute;e</a></li>
+    <li><a href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">Instagram</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-photo">
+    <img src="images/bridal-2.jpg" alt="Bridal makeup by Lama Sablgy" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">Makeup artist</div>
+    <h1>Lama Sablgy</h1>
+    <p class="hero-sub">Timeless makeup for brides, engagements &amp; unforgettable nights.</p>
+    <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener" style="margin-bottom:34px;">
+      Book your date
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+    <div class="hero-meta">
+      <div><strong>Specialties</strong>Bridal &bull; Engagement &bull; Soir&eacute;e &bull; High Soir&eacute;e</div>
+      <div><strong>Follow</strong>@makeup_by_lamasablgy</div>
+    </div>
+  </div>
+</header>
+
+<section class="service" id="bridal">
+  <div class="wrap">
+    <div class="service-text">
+      <div class="index">Bridal</div>
+      <h2>The face you'll see in every photograph, for years to come</h2>
+      <p>Soft, luminous, long-lasting makeup designed for your wedding day &mdash; and every photograph that comes after.</p>
+      <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
+        More bridal looks on Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+    </div>
+    <div class="service-gallery">
+      <div class="ph tall"><img src="images/bridal-1.jpg" alt="Bridal makeup, close-up with veil" loading="lazy"></div>
+      <div class="ph short"><img src="images/bridal-2.jpg" alt="Bridal makeup, updo with pearl pins" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="service reverse" id="engagement">
+  <div class="wrap">
+    <div class="service-text">
+      <div class="index">Engagement</div>
+      <h2>For the night you say yes to forever</h2>
+      <p>Polished, glowing makeup designed to make you feel confident, beautiful, and completely yourself on your special day.</p>
+      <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
+        More engagement looks on Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+    </div>
+    <div class="service-gallery">
+      <div class="ph tall"><img src="images/engagement-1.jpg" alt="Engagement makeup with beige hijab" loading="lazy"></div>
+      <div class="ph short"><img src="images/engagement-2.jpg" alt="Engagement makeup, half-up style" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="service" id="soiree">
+  <div class="wrap">
+    <div class="service-text">
+      <div class="index">Soir&eacute;e</div>
+      <h2>Evening glam, one shade past everyday</h2>
+      <p>Soft, elegant makeup that enhances your natural beauty and keeps you looking fresh and flawless all night.</p>
+      <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
+        More soir&eacute;e looks on Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+    </div>
+    <div class="service-gallery">
+      <div class="ph tall"><img src="images/soiree-1.jpg" alt="Soir&eacute;e makeup look, taupe hijab" loading="lazy"></div>
+      <div class="ph short"><img src="images/soiree-2.jpg" alt="Soir&eacute;e makeup look, brown hijab" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="service reverse" id="high-soiree">
+  <div class="wrap">
+    <div class="service-text">
+      <div class="index">High Soir&eacute;e</div>
+      <h2>Turn the volume all the way up</h2>
+      <p>Refined, glamorous makeup with a flawless finish &mdash; made to stand out while still feeling like you.</p>
+      <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
+        More high soir&eacute;e looks on Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+    </div>
+    <div class="service-gallery">
+      <div class="ph tall"><img src="images/high-soiree-1.jpg" alt="High soir&eacute;e glam makeup look" loading="lazy"></div>
+      <div class="ph short"><img src="images/high-soiree-2.jpg" alt="High soir&eacute;e glam makeup look, close-up" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why-head">
+      <div class="index">Why Lama</div>
+      <h2>Why Lama?</h2>
+    </div>
+    <ul class="why-list">
+      <li><span class="why-num">01</span><span>7+ years of makeup artistry</span></li>
+      <li><span class="why-num">02</span><span>Enhancing your natural beauty without changing who you are</span></li>
+      <li><span class="why-num">03</span><span>Soft, elegant &amp; timeless makeup is my signature</span></li>
+      <li><span class="why-num">04</span><span>Long-lasting, camera-ready makeup that stays in place</span></li>
+      <li><span class="why-num">05</span><span>Your vision matters &mdash; I listen, understand, and create the look you want</span></li>
+      <li><span class="why-num">06</span><span>Personalized looks that bring out your best features</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="serif">Every occasion has a face that belongs to it. Let's find yours, and make it unforgettable.</p>
+    <a class="btn btn-stacked" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
+      <span>
+        <strong>Check availability</strong>
+        <em>Book via Instagram DM</em>
+      </span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>Lama Sablgy — Makeup Artist</span>
+  <a href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">@makeup_by_lamasablgy</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  const toggle = document.getElementById('navToggle');
+  const list = document.getElementById('navList');
+  toggle.addEventListener('click', () => list.classList.toggle('open'));
+  list.querySelectorAll('a').forEach(a => a.addEventListener('click', () => list.classList.remove('open')));
+</script>
+
+</body>
+</html>
