@@ -267,6 +267,87 @@
     border-radius: 2px 2px 60px 2px;
   }
 
+  /* ---------- WHY LAMA ---------- */
+  .why{
+    padding:120px 0;
+    border-top:1px solid var(--line);
+    background:linear-gradient(180deg, transparent, rgba(185,111,78,0.05));
+  }
+  .why .wrap{
+    display:grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap:56px;
+    align-items:start;
+  }
+  .why-head .index{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--clay);
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+  .why-head h2{
+    font-size:clamp(2.1rem, 4vw, 2.9rem);
+    line-height:1.05;
+    max-width:9ch;
+  }
+  .why-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0;
+  }
+  .why-list li{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:22px 20px 22px 0;
+    border-top:1px solid var(--line);
+    font-size:.98rem;
+    line-height:1.55;
+    color:var(--paper-dim);
+    font-weight:300;
+  }
+  .why-list li:nth-last-child(-n+1),
+  .why-list li:nth-last-child(-n+2){
+    border-bottom:1px solid var(--line);
+  }
+  .why-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--clay);
+    font-size:1.15rem;
+    flex:none;
+    line-height:1.4;
+  }
+
+  /* ---------- STACKED CTA BUTTON ---------- */
+  .btn-stacked{
+    flex-direction:row;
+    padding:16px 28px;
+  }
+  .btn-stacked span{
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    gap:2px;
+  }
+  .btn-stacked strong{
+    font-family:'Work Sans', sans-serif;
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+  }
+  .btn-stacked em{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:.85rem;
+    opacity:.75;
+  }
+
   /* ---------- FOOTER / CTA ---------- */
   .cta{
     border-top:1px solid var(--line);
@@ -335,6 +416,13 @@
     .service.reverse .service-text{order:1;}
     .service.reverse .service-gallery{order:2;}
     .service-gallery .ph.short{margin-top:36px;}
+    .why{padding:80px 0;}
+    .why .wrap{grid-template-columns:1fr; gap:32px;}
+    .why-head h2{max-width:none;}
+    .why-list{grid-template-columns:1fr;}
+    .why-list li:nth-last-child(-n+2){border-bottom:none;}
+    .why-list li:last-child{border-bottom:1px solid var(--line);}
+    .btn-stacked{padding:14px 22px;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -362,12 +450,15 @@
     <img src="images/bridal-2.jpg" alt="Bridal makeup by Lama Sablgy" loading="eager">
   </div>
   <div class="hero-content">
-    <div class="hero-kicker">Makeup artistry</div>
+    <div class="hero-kicker">Makeup artist</div>
     <h1>Lama Sablgy</h1>
-    <p class="hero-sub">A face for every occasion — bridal, engagement, and evening glam, built to hold under lights, tears, and long nights of celebration.</p>
+    <p class="hero-sub">Timeless makeup for brides, engagements &amp; unforgettable nights.</p>
+    <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener" style="margin-bottom:34px;">
+      Book your date
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
     <div class="hero-meta">
-      <div><strong>Bookings</strong>Open via Instagram DM</div>
-      <div><strong>Specialties</strong>Bridal &amp; occasion makeup</div>
+      <div><strong>Specialties</strong>Bridal &bull; Engagement &bull; Soir&eacute;e &bull; High Soir&eacute;e</div>
       <div><strong>Follow</strong>@makeup_by_lamasablgy</div>
     </div>
   </div>
@@ -378,7 +469,7 @@
     <div class="service-text">
       <div class="index">Bridal</div>
       <h2>The face you'll see in every photograph, for years to come</h2>
-      <p>A wedding day asks a lot of a face — hours under lights, close-up cameras, and a few happy tears. This look is built to hold: soft, luminous, and unmistakably the bride, from the aisle to the last dance.</p>
+      <p>Soft, luminous, long-lasting makeup designed for your wedding day &mdash; and every photograph that comes after.</p>
       <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
         More bridal looks on Instagram
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -396,7 +487,7 @@
     <div class="service-text">
       <div class="index">Engagement</div>
       <h2>For the night you say yes to forever</h2>
-      <p>Warmer and softer than a wedding face, with room for the story to show — a look that photographs as gently as the moment feels, in daylight or under string lights.</p>
+      <p>Polished, glowing makeup designed to make you feel confident, beautiful, and completely yourself on your special day.</p>
       <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
         More engagement looks on Instagram
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -414,7 +505,7 @@
     <div class="service-text">
       <div class="index">Soir&eacute;e</div>
       <h2>Evening glam, one shade past everyday</h2>
-      <p>For the weddings you're a guest at, the dinners that call for more shimmer, and the nights out that deserve the extra effort — polished, warm, and made for good lighting.</p>
+      <p>Soft, elegant makeup that enhances your natural beauty and keeps you looking fresh and flawless all night.</p>
       <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
         More soir&eacute;e looks on Instagram
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -427,50 +518,4 @@
   </div>
 </section>
 
-<section class="service reverse" id="high-soiree">
-  <div class="wrap">
-    <div class="service-text">
-      <div class="index">High Soir&eacute;e</div>
-      <h2>Turn the volume all the way up</h2>
-      <p>Deeper color, sharper light, a full statement face for the biggest night on the calendar — when the dress is dramatic and the makeup needs to keep up with it.</p>
-      <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
-        More high soir&eacute;e looks on Instagram
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-      </a>
-    </div>
-    <div class="service-gallery">
-      <div class="ph tall"><img src="images/high-soiree-1.jpg" alt="High soir&eacute;e glam makeup look" loading="lazy"></div>
-      <div class="ph short"><img src="images/high-soiree-2.jpg" alt="High soir&eacute;e glam makeup look, close-up" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap">
-    <p class="serif">Every occasion has a face that belongs to it. Let's find yours.</p>
-    <a class="btn" href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">
-      Book on Instagram
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-    </a>
-  </div>
-</section>
-
-<footer>
-  <span>Lama Sablgy — Makeup Artist</span>
-  <a href="https://www.instagram.com/makeup_by_lamasablgy?igsi=cmtxZWRrYXliajJ5" target="_blank" rel="noopener">@makeup_by_lamasablgy</a>
-</footer>
-
-<script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 12);
-  });
-
-  const toggle = document.getElementById('navToggle');
-  const list = document.getElementById('navList');
-  toggle.addEventListener('click', () => list.classList.toggle('open'));
-  list.querySelectorAll('a').forEach(a => a.addEventListener('click', () => list.classList.remove('open')));
-</script>
-
-</body>
-</html>
+<section class="service
